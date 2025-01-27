@@ -1,4 +1,8 @@
 const App = () => {
-  return <div>App</div>;
+  return (
+    <div>
+      <h1 className="text-3xl bg-teal-500 ">Hello world!</h1>
+    </div>
+  );
 };
 export default App;
