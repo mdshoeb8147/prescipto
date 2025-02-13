@@ -28,12 +28,12 @@ const Appointment = () => {
 
       // setting end time of date with index
       let endTime = new Date();
-      endTime.setDate(endTime.getDate() + 1);
+      endTime.setDate(endTime.getDate() + i);
       endTime.setHours(21, 0, 0, 0);
       // setting hours
       if (today.getDate() === currentDate.getDate()) {
         currentDate.setHours(
-          currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
+          currentDate.getHours() > 10 ? currentDate.getHours() + i : 10
         );
         currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
       } else {
@@ -55,7 +55,9 @@ const Appointment = () => {
         });
 
         // increment current time
+        currentDate.setMinutes(currentDate.getMinutes() + 30);
       }
+      setDocSlots((prev) => [...prev, timeSlots]);
     }
   };
 
@@ -67,6 +69,9 @@ const Appointment = () => {
     getAvailableSlots();
   }, [docInfo]);
 
+  useEffect(() => {
+    console.log(docSlots);
+  }, [docSlots]);
   return (
     docInfo && (
       <div>
